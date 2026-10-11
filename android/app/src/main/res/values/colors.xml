@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="zikr_background">#04060C</color>
+    <color name="zikr_card">#0B1220</color>
+    <color name="zikr_accent">#22F5FF</color>
+    <color name="ic_launcher_background">#04060C</color>
+</resources>

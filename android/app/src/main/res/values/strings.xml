@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tasbeeh Zikr Counter</string>
+    <string name="a11y_description">Used only to detect volume buttons for counting dhikr. Noor Tasbeeh does not read your screen or data.</string>
+</resources>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/panel_bg"
+    android:padding="12dp">
+
+    <!-- Drag handle -->
+    <LinearLayout
+        android:id="@+id/panel_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/panel_arabic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="سُبْحَانَ الله"
+                android:textColor="#F2F6FF"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/panel_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SubhanAllah"
+                android:textColor="#8A94A8"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/panel_minimize"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Minimize"
+            android:src="@android:drawable/arrow_down_float"
+            android:tint="#8A94A8" />
+
+        <ImageButton
+            android:id="@+id/panel_close"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Close"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:tint="#8A94A8" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/panel_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#22F5FF"
+        android:includeFontPadding="false" />
+
+    <TextView
+        android:id="@+id/panel_round"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#8A94A8"
+        android:textSize="11sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/panel_progress_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="0 of 33"
+        android:textColor="#F2F6FF"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <ProgressBar
+        android:id="@+id/panel_progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="4dp"
+        android:max="33"
+        android:progress="0"
+        android:progressTint="#22F5FF"
+        android:progressBackgroundTint="#1B2740" />
+
+    <TextView
+        android:id="@+id/panel_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text=""
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="8dp">
+
+        <ImageButton
+            android:id="@+id/panel_minus"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/circle_button"
+            android:contentDescription="Minus one"
+            android:src="@android:drawable/ic_input_delete"
+            android:tint="#F2F6FF"
+            android:padding="12dp" />
+
+        <ImageButton
+            android:id="@+id/panel_plus"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/circle_button_primary"
+            android:contentDescription="Plus one"
+            android:src="@android:drawable/ic_input_add"
+            android:tint="#04060C"
+            android:padding="16dp" />
+
+        <ImageButton
+            android:id="@+id/panel_reset"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/circle_button"
+            android:contentDescription="Reset"
+            android:src="@android:drawable/ic_menu_revert"
+            android:tint="#F2F6FF"
+            android:padding="12dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
