@@ -1,7 +1,22 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
+}
+
+// Release signing: when android/keystore.properties exists (the CI writes
+// it from the KEYSTORE_* secrets), the release is signed with the upload
+// key. Otherwise the debug keystore is used so the build still succeeds.
+val keystoreProperties = Properties()
+val keystorePropertiesFile = rootProject.file("keystore.properties")
+val hasReleaseKeystore = keystorePropertiesFile.exists()
+if (hasReleaseKeystore) {
+    FileInputStream(keystorePropertiesFile).use { stream ->
+        keystoreProperties.load(stream)
+    }
 }
 
 android {
@@ -25,17 +40,9 @@ android {
         versionName = flutter.versionName
     }
 
-    // Release signing: when android/keystore.properties exists (the CI writes
-    // it from the KEYSTORE_* secrets), the release is signed with the upload
-    // key. Otherwise the debug keystore is used so the build still succeeds.
     signingConfigs {
         create("release") {
-            val keystorePropertiesFile = rootProject.file("keystore.properties")
-            if (keystorePropertiesFile.exists()) {
-                val keystoreProperties = java.util.Properties()
-                keystorePropertiesFile.inputStream().use {
-                    keystoreProperties.load(it)
-                }
+            if (hasReleaseKeystore) {
                 keyAlias = keystoreProperties["keyAlias"] as String
                 keyPassword = keystoreProperties["keyPassword"] as String
                 storeFile = file(keystoreProperties["storeFile"] as String)
@@ -46,9 +53,8 @@ android {
 
     buildTypes {
         release {
-            val keystorePropertiesFile = rootProject.file("keystore.properties")
             signingConfig =
-                if (keystorePropertiesFile.exists()) {
+                if (hasReleaseKeystore) {
                     signingConfigs.getByName("release")
                 } else {
                     signingConfigs.getByName("debug")
