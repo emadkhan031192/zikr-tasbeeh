@@ -36,7 +36,8 @@ class ReminderService {
     if (_ready) return;
     tzdata.initializeTimeZones();
     try {
-      final name = await FlutterTimezone.getLocalTimezone();
+      final name =
+          (await FlutterTimezone.getLocalTimezone()).identifier;
       tz.setLocalLocation(tz.getLocation(name));
     } catch (_) {
       tz.setLocalLocation(tz.getLocation('UTC'));
@@ -44,7 +45,7 @@ class ReminderService {
     const androidInit = AndroidInitializationSettings('@mipmap/ic_launcher');
     const initSettings = InitializationSettings(android: androidInit);
     await _plugin.initialize(
-      initSettings,
+      settings: initSettings,
       onDidReceiveNotificationResponse: _onResponse,
       onDidReceiveBackgroundNotificationResponse: _onBackgroundResponse,
     );
@@ -254,7 +255,7 @@ class ReminderService {
 
   static Future<void> _handleAction(NotificationResponse r) async {
     if (r.actionId == 'done') {
-      await _plugin.cancel(r.id ?? 0);
+      await _plugin.cancel(id: r.id ?? 0);
       return;
     }
     if (r.actionId != 'snooze') return;

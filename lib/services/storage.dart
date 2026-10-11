@@ -6,8 +6,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 ///
 /// IMPORTANT CONTRACT (mirrored by the native Android code):
 /// - Keys are stored exactly as written here. On Android the
-///   shared_preferences plugin prefixes every key with "flutter.", so native
-///   code must read "flutter.<key>".
+///   shared_preferences plugin prefixes every key with `flutter.`, so native
+///   code must read e.g. `flutter.zikr.currentDhikr`.
 /// - The native overlay service, accessibility service and reminder receivers
 ///   read and write these keys directly, so the JSON shapes below must not
 ///   change without updating the Kotlin side too.

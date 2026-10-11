@@ -379,7 +379,7 @@ class _HomeScreenState extends State<HomeScreen>
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: dhikrPresets.length,
-        separatorBuilder: (_, __) => const SizedBox(width: 8),
+        separatorBuilder: (_, _) => const SizedBox(width: 8),
         itemBuilder: (context, i) {
           final d = dhikrPresets[i];
           final selected = d.id == c.currentId;
@@ -681,7 +681,7 @@ class _HomeScreenState extends State<HomeScreen>
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
         child: Row(
           children: [
-            Icon(Icons.tune, color: color, size: 20),
+            Icon(icon, color: color, size: 20),
             const SizedBox(width: 8),
             Text(
               '${s.t('setupRow')}: $label',

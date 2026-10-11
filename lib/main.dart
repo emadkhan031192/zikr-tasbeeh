@@ -1,4 +1,5 @@
-import 'package:flutter/services.dart';
+import 'dart:ui' as ui;
+
 import 'package:flutter/widgets.dart';
 
 import 'app.dart';
@@ -22,7 +23,8 @@ Future<void> main() async {
   // Register the headless callback used by the BOOT_COMPLETED receiver to
   // re-schedule reminders after a reboot.
   try {
-    final handle = PluginUtilities.getCallbackHandle(bootRescheduleCallback);
+    final handle =
+        ui.PluginUtilities.getCallbackHandle(bootRescheduleCallback);
     if (handle != null) {
       await Storage.setInt(Storage.keyBootCallback, handle.toRawHandle());
     }

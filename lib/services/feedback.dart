@@ -66,7 +66,7 @@ class Feedback {
 
   static Future<bool> _hasVibrator() async {
     try {
-      return await Vibration.hasVibrator() ?? false;
+      return await Vibration.hasVibrator();
     } catch (_) {
       return false;
     }
